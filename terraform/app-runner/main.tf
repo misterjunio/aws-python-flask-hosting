@@ -34,11 +34,7 @@ resource "aws_iam_role" "app_runner_ecr_access" {
       }
     ]
   })
-}
-
-resource "aws_iam_role_policy_attachment" "app_runner_ecr_access_attachment" {
-  role       = aws_iam_role.app_runner_ecr_access.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSAppRunnerServicePolicyForECRAccess"
+  managed_policy_arns = ["arn:aws:iam::aws:policy/service-role/AWSAppRunnerServicePolicyForECRAccess"]
 }
 
 resource "aws_apprunner_service" "sample_python_flask_app" {
