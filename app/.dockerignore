@@ -17,9 +17,11 @@
 **/docker-compose.yml
 **/Dockerfile
 **/Dockerfile.develop
+**/Dockerfile.lambda
 **/lambda-test-event.json
 **/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
 **/__pycache__
 **/venv
+**/zappa_settings.json

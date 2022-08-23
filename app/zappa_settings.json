@@ -1,0 +1,23 @@
+{
+    "python-platform": {
+        "app_function": "application.application",
+        "exclude": [
+            "__pycache__/",
+            "venv/",
+            ".dockerignore",
+            "Dockerfile",
+            "Dockerfile.lambda",
+            "zappa_settings.json"
+        ],
+        "memory_size": 128,
+        "project_name": "sample-python-flask-app",
+        "runtime": "python3.9",
+        "s3_bucket": "[replaced via CI/CD with jq]"
+    },
+    "docker-platform": {
+        "app_function": "application.application",
+        "memory_size": 128,
+        "project_name": "sample-python-flask-app",
+        "s3_bucket": "[replaced via CI/CD with jq]"
+    }
+}
