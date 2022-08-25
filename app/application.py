@@ -11,7 +11,7 @@ def hello_world():
 
 @application.route('/<name>')
 def hello(name):
-    application.logger.info(f'Saying hello to {name}')
+    print(f'Saying hello to {name}')
     return f'Hello, {escape(name)}!'
 
 
