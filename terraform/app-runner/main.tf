@@ -1,14 +1,8 @@
 terraform {
-  cloud {
-    organization = "misterjunio"
-    workspaces {
-      name = "sample-python-flask-app-app-runner"
-    }
-  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.27"
+      version = "~> 4.33"
     }
   }
 }

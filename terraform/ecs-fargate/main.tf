@@ -1,14 +1,8 @@
 terraform {
-  cloud {
-    organization = "misterjunio"
-    workspaces {
-      name = "sample-python-flask-app-ecs-fargate"
-    }
-  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.27"
+      version = "~> 4.33"
     }
   }
 }
@@ -18,11 +12,11 @@ provider "aws" {
 }
 
 resource "aws_ecs_cluster" "app_cluster" {
-  name = "sample-python-flask-app-ecs-fargate-cluster"
+  name = "sample-python-flask-app-ecs-cluster"
 }
 
 resource "aws_iam_role" "ecs_task_execution_role" {
-  name = "sample-python-flask-app-ecs-fargate-task-execution-role"
+  name = "sample-python-flask-app-ecs-task-execution-role"
   assume_role_policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
@@ -40,7 +34,7 @@ resource "aws_iam_role" "ecs_task_execution_role" {
 }
 
 resource "aws_ecs_task_definition" "app_task_definition" {
-  family                   = "sample-python-flask-app-ecs-fargate-task-definition"
+  family                   = "sample-python-flask-app-ecs-task-definition"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
   cpu                      = 256
@@ -59,7 +53,7 @@ data "aws_subnets" "app_subnets" {
 }
 
 resource "aws_security_group" "app_security_group" {
-  name   = "Sample Python Flask App ECS Fargate SG"
+  name   = "Sample Python Flask App ECS SG"
   vpc_id = aws_default_vpc.app_vpc.id
 
   ingress {
@@ -78,7 +72,7 @@ resource "aws_security_group" "app_security_group" {
 }
 
 resource "aws_ecs_service" "app_service" {
-  name                  = "sample-python-flask-app-ecs-fargate-service"
+  name                  = "sample-python-flask-app-ecs-service"
   cluster               = aws_ecs_cluster.app_cluster.arn
   task_definition       = aws_ecs_task_definition.app_task_definition.arn
   desired_count         = 1

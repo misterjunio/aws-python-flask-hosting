@@ -1,6 +1,6 @@
 [
     {
-        "name": "sample-python-flask-app-ecs-fargate-container",
+        "name": "sample-python-flask-app-ecs-container",
         "image": "[replaced via CI/CD with jq]",
         "essential": true,
         "portMappings": [
